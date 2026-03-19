@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ピアノ・ステップ 🎹</title>
+  <meta name="description" content="2〜3歳向けピアノ学習アプリ。画面を見ながら楽しくドレミを覚えよう！" />
+  <meta property="og:title" content="ピアノ・ステップ 🎹" />
+  <meta property="og:description" content="2〜3歳向けピアノ学習アプリ。画面を見ながら楽しくドレミを覚えよう！" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ホーム画面 -->
+    <section id="screen-home" class="screen" aria-label="ホーム">
+      <div class="home-character" aria-hidden="true">🎹</div>
+      <h1 class="app-title">ピアノ・ステップ</h1>
+      <p class="app-subtitle">たのしくドレミをおぼえよう！</p>
+      <p id="home-age-info" class="home-age-info" hidden></p>
+      <div id="home-stars" class="home-stars" hidden aria-label="獲得した星の合計"></div>
+      <button id="btn-start" class="btn btn-primary gap-md" aria-label="スタートする">
+        ▶ スタート
+      </button>
+      <button id="btn-change-age" class="btn btn-ghost" hidden aria-label="年齢を変更する">
+        ねんれいをかえる
+      </button>
+    </section>
+
+    <!-- 年齢選択画面 -->
+    <section id="screen-age-select" class="screen" hidden aria-label="年齢選択">
+      <h2 class="section-title gap-md">なんさいですか？</h2>
+      <div class="home-character" aria-hidden="true">🐣</div>
+      <div class="age-btn-group">
+        <button id="btn-age-2" class="btn age-btn age-btn-2" aria-label="2歳を選ぶ">
+          🐥 ２さい
+        </button>
+        <button id="btn-age-3" class="btn age-btn age-btn-3" aria-label="3歳を選ぶ">
+          🐰 ３さい
+        </button>
+      </div>
+    </section>
+
+    <!-- モード選択画面 -->
+    <section id="screen-mode-select" class="screen" hidden aria-label="モード選択">
+      <h2 class="section-title">
+        <span id="mode-age-label">２さいモード</span>
+      </h2>
+      <p class="hint-text gap-md">どれであそぶ？</p>
+
+      <div class="card mode-card gap-md" style="text-align:center;">
+        <div class="mode-icon" aria-hidden="true">🎵</div>
+        <div class="mode-name">1おんチャレンジ</div>
+        <div class="mode-desc">1つのおとをひいてみよう！</div>
+        <button id="btn-mode-1note" class="btn btn-primary" style="margin-top:12px;" aria-label="1音チャレンジを始める">
+          1おんチャレンジ
+        </button>
+      </div>
+
+      <button id="btn-mode-back" class="btn btn-ghost" aria-label="ホームに戻る">
+        ← もどる
+      </button>
+    </section>
+
+    <!-- プレイ画面 -->
+    <section id="screen-play" class="screen" hidden aria-label="プレイ">
+      <div class="play-header">
+        <span id="play-stage-num" class="stage-counter">1 / 3</span>
+        <span id="play-cleared-badge" class="cleared-badge" hidden aria-label="クリア済み">✓ クリア済み</span>
+      </div>
+
+      <div class="note-display gap-sm">
+        <span id="play-note-jp" class="note-jp" aria-label="音名">ド</span>
+        <span id="play-note-en" class="note-en" aria-label="英語音名">C</span>
+      </div>
+
+      <div id="staff-container" class="staff-container" role="img" aria-label="五線譜"></div>
+
+      <div class="play-hint-row">
+        <p class="hint-text">ピアノでひいてみよう！</p>
+        <button id="btn-preview" class="btn-preview" aria-label="この音を聴く">🔊</button>
+      </div>
+
+      <button id="btn-done" class="btn btn-done" aria-label="弾けたよボタン">
+        🎵 ひけたよ！
+      </button>
+
+      <button id="btn-play-back" class="btn btn-ghost" aria-label="モード選択に戻る">
+        ← もどる
+      </button>
+    </section>
+
+    <!-- クリア画面 -->
+    <section id="screen-clear" class="screen" hidden aria-label="クリア">
+      <div class="clear-bg" aria-hidden="true"></div>
+
+      <div class="clear-character" aria-hidden="true">🎊</div>
+      <h2 class="clear-title">できたね！</h2>
+      <p class="clear-note" id="clear-note-jp" aria-label="できた音">ド</p>
+
+      <div id="clear-stars" class="stars-container" role="img" aria-label="獲得した星"></div>
+
+      <button id="btn-next-stage" class="btn btn-primary gap-md" aria-label="次のステージへ">
+        つぎへ ▶
+      </button>
+
+      <button id="btn-clear-back" class="btn btn-ghost" aria-label="モード選択に戻る">
+        モードせんたくにもどる
+      </button>
+    </section>
+
+    <!-- 全クリア画面 -->
+    <section id="screen-all-clear" class="screen" hidden aria-label="全クリア">
+      <div class="all-clear-character" aria-hidden="true">🏆</div>
+      <h2 class="all-clear-title">ぜんぶクリア！</h2>
+      <p class="all-clear-sub">ドレミがぜんぶひけたね！</p>
+      <div class="confetti-area" aria-hidden="true">🎉 🎊 🎉</div>
+
+      <button id="btn-play-again" class="btn btn-primary gap-sm" aria-label="もう一度遊ぶ">
+        🔁 もういちどあそぶ
+      </button>
+      <button id="btn-all-clear-home" class="btn btn-ghost" aria-label="ホームに戻る">
+        🏠 ホームにもどる
+      </button>
+    </section>
+
+  </div>
+
+  <!-- エラートースト（alert の代替） -->
+  <div id="error-toast" class="error-toast" hidden role="alert"></div>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>

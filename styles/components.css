@@ -1,0 +1,327 @@
+/* components.css — 各コンポーネント */
+
+/* ========================================
+   ホーム画面
+======================================== */
+#screen-home {
+  justify-content: center;
+  gap: 16px;
+}
+
+.home-character {
+  font-size: 5rem;
+  animation: bounce 2s infinite ease-in-out;
+  margin-bottom: 8px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.home-age-info {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+/* 【機能3】ホーム星カウント */
+.home-stars {
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================================
+   年齢選択画面
+======================================== */
+#screen-age-select {
+  justify-content: center;
+  gap: 16px;
+}
+
+.age-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.age-btn {
+  font-size: 1.8rem;
+  padding: 24px;
+}
+
+.age-btn-2 {
+  background: linear-gradient(135deg, #FF6B9D, #FF8FAF);
+  color: white;
+}
+
+.age-btn-3 {
+  background: linear-gradient(135deg, #7EC8A4, #9DD4B8);
+  color: white;
+}
+
+/* ========================================
+   モード選択画面
+======================================== */
+#screen-mode-select {
+  gap: 16px;
+}
+
+.mode-card {
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.mode-card:active {
+  transform: scale(0.97);
+}
+
+.mode-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.mode-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.mode-desc {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  background: #eee;
+  color: #aaa;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+
+/* ========================================
+   プレイ画面
+======================================== */
+#screen-play {
+  padding-top: 16px;
+  gap: 12px;
+}
+
+.play-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+}
+
+.stage-counter {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.cleared-badge {
+  background: #FFD700;
+  color: #333;
+  font-size: 0.8rem;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.note-display {
+  text-align: center;
+  line-height: 1.1;
+}
+
+.note-jp {
+  font-size: 5rem;
+  font-weight: 900;
+  display: block;
+  transition: color 0.3s;
+}
+
+.note-en {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #aaa;
+  display: block;
+}
+
+.staff-container {
+  width: 100%;
+  max-width: 360px;
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 10px var(--color-shadow);
+}
+
+.staff-svg {
+  display: block;
+}
+
+.character-area {
+  font-size: 3.5rem;
+  animation: wiggle 1.5s infinite ease-in-out;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.hint-text {
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
+}
+
+/* 【機能2】ヒント行 + プレビューボタン */
+.play-hint-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-preview {
+  font-size: 1.6rem;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.1s, box-shadow 0.1s;
+  flex-shrink: 0;
+}
+
+.btn-preview:active {
+  transform: scale(0.92);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.btn-done {
+  background: linear-gradient(135deg, #FF6B9D, #FF8FAF);
+  color: white;
+  font-size: 1.6rem;
+  padding: 20px 32px;
+  border-radius: 50px;
+  box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4); }
+  50% { box-shadow: 0 8px 28px rgba(255, 107, 157, 0.7); }
+}
+
+/* ========================================
+   クリア画面
+======================================== */
+#screen-clear {
+  justify-content: center;
+  gap: 20px;
+}
+
+.clear-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #FFF4E6, #FFF0F8);
+  z-index: -1;
+}
+
+.clear-character {
+  font-size: 5rem;
+  animation: celebrate 0.6s ease-out;
+}
+
+@keyframes celebrate {
+  0% { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.2) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.clear-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+}
+
+.clear-note {
+  font-size: 3rem;
+  font-weight: 900;
+}
+
+.stars-container {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.star {
+  font-size: 2.5rem;
+  animation: starPop 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.star:nth-child(1) { animation-delay: 0.1s; }
+.star:nth-child(2) { animation-delay: 0.25s; }
+.star:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes starPop {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.3); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ========================================
+   全クリア画面
+======================================== */
+#screen-all-clear {
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.all-clear-character {
+  font-size: 5rem;
+  animation: spin 1s ease-out;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) scale(0.5); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.all-clear-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+}
+
+.all-clear-sub {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.confetti-area {
+  font-size: 2rem;
+  letter-spacing: 0.3em;
+}

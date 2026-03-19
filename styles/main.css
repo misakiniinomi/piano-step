@@ -1,0 +1,173 @@
+/* main.css — 全体スタイル */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #FF6B9D;
+  --color-secondary: #FFB347;
+  --color-accent: #7EC8A4;
+  --color-bg: #FFF9F0;
+  --color-text: #2C3E50;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --border-radius: 20px;
+  --font-main: 'Hiragino Maru Gothic ProN', 'BIZ UDPGothic', 'Rounded Mplus 1c', Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  max-height: 860px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* [hidden] は display:flex に負けるため明示的に上書き */
+[hidden] {
+  display: none !important;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px;
+  overflow-y: auto;
+}
+
+/* タイトル */
+.app-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  text-shadow: 2px 2px 0 rgba(255, 107, 157, 0.2);
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+
+.app-subtitle {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+/* ボタン共通 */
+.btn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 18px 24px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-main);
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  text-align: center;
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 6px var(--color-shadow);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-secondary {
+  background: var(--color-secondary);
+  color: white;
+}
+
+.btn-accent {
+  background: var(--color-accent);
+  color: white;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #888;
+  box-shadow: none;
+  font-size: 1rem;
+  padding: 12px;
+}
+
+.btn-ghost:active {
+  box-shadow: none;
+}
+
+/* カード */
+.card {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 20px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 4px 16px var(--color-shadow);
+}
+
+/* セクション見出し */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* スペーサー */
+.spacer {
+  flex: 1;
+}
+
+.gap-sm { margin-bottom: 12px; }
+.gap-md { margin-bottom: 20px; }
+.gap-lg { margin-bottom: 32px; }
+
+/* エラートースト */
+.error-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  z-index: 999;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}

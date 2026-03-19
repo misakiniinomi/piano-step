@@ -1,0 +1,29 @@
+[
+  {
+    "id": "age2-note-c-01",
+    "noteJp": "ド",
+    "noteEn": "C",
+    "staffPosition": "C4",
+    "emoji": "🎵",
+    "color": "#FF6B6B",
+    "frequency": 261.63
+  },
+  {
+    "id": "age2-note-d-01",
+    "noteJp": "レ",
+    "noteEn": "D",
+    "staffPosition": "D4",
+    "emoji": "🎶",
+    "color": "#FFB347",
+    "frequency": 293.66
+  },
+  {
+    "id": "age2-note-e-01",
+    "noteJp": "ミ",
+    "noteEn": "E",
+    "staffPosition": "E4",
+    "emoji": "🎼",
+    "color": "#7EC8A4",
+    "frequency": 329.63
+  }
+]

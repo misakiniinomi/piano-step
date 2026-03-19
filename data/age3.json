@@ -1,0 +1,47 @@
+[
+  {
+    "id": "age3-note-c-01",
+    "noteJp": "ド",
+    "noteEn": "C",
+    "staffPosition": "C4",
+    "emoji": "🎵",
+    "color": "#FF6B6B",
+    "frequency": 261.63
+  },
+  {
+    "id": "age3-note-d-01",
+    "noteJp": "レ",
+    "noteEn": "D",
+    "staffPosition": "D4",
+    "emoji": "🎶",
+    "color": "#FFB347",
+    "frequency": 293.66
+  },
+  {
+    "id": "age3-note-e-01",
+    "noteJp": "ミ",
+    "noteEn": "E",
+    "staffPosition": "E4",
+    "emoji": "🎼",
+    "color": "#7EC8A4",
+    "frequency": 329.63
+  },
+  {
+    "id": "age3-note-f-01",
+    "noteJp": "ファ",
+    "noteEn": "F",
+    "staffPosition": "F4",
+    "emoji": "🎵",
+    "color": "#A78BFA",
+    "frequency": 349.23
+  },
+  {
+    "id": "age3-note-g-01",
+    "noteJp": "ソ",
+    "noteEn": "G",
+    "staffPosition": "G4",
+    "emoji": "🎶",
+    "color": "#60A5FA",
+    "frequency": 392.00
+  }
+]
