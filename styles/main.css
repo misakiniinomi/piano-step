@@ -1,5 +1,14 @@
 /* main.css — 全体スタイル */
 
+@font-face {
+  font-family: 'Bravura';
+  src: url('../font/Bravura.woff2') format('woff2'),
+       url('../font/Bravura.woff') format('woff'),
+       url('../font/Bravura.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -98,6 +107,7 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
+  animation: none;
 }
 
 .btn-primary {

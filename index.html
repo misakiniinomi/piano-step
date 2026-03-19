@@ -41,6 +41,9 @@
           🐰 ３さい
         </button>
       </div>
+      <button id="btn-age-back" class="btn btn-ghost" aria-label="ホームにもどる">
+        ← もどる
+      </button>
     </section>
 
     <!-- モード選択画面 -->
@@ -50,13 +53,42 @@
       </h2>
       <p class="hint-text gap-md">どれであそぶ？</p>
 
-      <div class="card mode-card gap-md" style="text-align:center;">
-        <div class="mode-icon" aria-hidden="true">🎵</div>
-        <div class="mode-name">1おんチャレンジ</div>
-        <div class="mode-desc">1つのおとをひいてみよう！</div>
-        <button id="btn-mode-1note" class="btn btn-primary" style="margin-top:12px;" aria-label="1音チャレンジを始める">
-          1おんチャレンジ
-        </button>
+      <div class="mode-cards-list">
+        <div class="card mode-card" style="text-align:center;">
+          <div class="mode-icon" aria-hidden="true">🎵</div>
+          <div class="mode-name">1おんチャレンジ</div>
+          <div class="mode-desc">1つのおとをひいてみよう！</div>
+          <button id="btn-mode-1note" class="btn btn-primary" style="margin-top:12px;" aria-label="1音チャレンジを始める">
+            1おんチャレンジ
+          </button>
+        </div>
+
+        <div id="mode-card-doremi" class="card mode-card" style="text-align:center; display:none;">
+          <div class="mode-icon" aria-hidden="true">🎶</div>
+          <div class="mode-name">ドレミチャレンジ</div>
+          <div class="mode-desc">じゅんばんにひいてみよう！</div>
+          <button id="btn-mode-doremi" class="btn btn-accent" style="margin-top:12px;" aria-label="ドレミチャレンジを始める">
+            ドレミチャレンジ
+          </button>
+        </div>
+
+        <div class="card mode-card" style="text-align:center;">
+          <div class="mode-icon" aria-hidden="true">🎹</div>
+          <div class="mode-name">じゆうモード</div>
+          <div class="mode-desc">すきなおとをひいてみよう！</div>
+          <button id="btn-mode-free" class="btn btn-secondary" style="margin-top:12px;" aria-label="自由モードを始める">
+            じゆうにひく
+          </button>
+        </div>
+
+        <div class="card mode-card" style="text-align:center;">
+          <div class="mode-icon" aria-hidden="true">📚</div>
+          <div class="mode-name">まなびモード</div>
+          <div class="mode-desc">おとをおぼえよう！</div>
+          <button id="btn-mode-learn" class="btn btn-accent" style="margin-top:12px;" aria-label="まなびモードを始める">
+            まなびモード
+          </button>
+        </div>
       </div>
 
       <button id="btn-mode-back" class="btn btn-ghost" aria-label="ホームに戻る">
@@ -78,10 +110,8 @@
 
       <div id="staff-container" class="staff-container" role="img" aria-label="五線譜"></div>
 
-      <div class="play-hint-row">
-        <p class="hint-text">ピアノでひいてみよう！</p>
-        <button id="btn-preview" class="btn-preview" aria-label="この音を聴く">🔊</button>
-      </div>
+      <button id="btn-preview" class="btn-piano-preview" aria-label="この音を聴く">🎹</button>
+      <p class="hint-text">ピアノでひいてみよう！</p>
 
       <button id="btn-done" class="btn btn-done" aria-label="弾けたよボタン">
         🎵 ひけたよ！
@@ -115,7 +145,7 @@
     <section id="screen-all-clear" class="screen" hidden aria-label="全クリア">
       <div class="all-clear-character" aria-hidden="true">🏆</div>
       <h2 class="all-clear-title">ぜんぶクリア！</h2>
-      <p class="all-clear-sub">ドレミがぜんぶひけたね！</p>
+      <p class="all-clear-sub" id="all-clear-sub">ドレミがぜんぶひけたね！</p>
       <div class="confetti-area" aria-hidden="true">🎉 🎊 🎉</div>
 
       <button id="btn-play-again" class="btn btn-primary gap-sm" aria-label="もう一度遊ぶ">
@@ -126,11 +156,171 @@
       </button>
     </section>
 
+    <!-- 自由モード画面 -->
+    <section id="screen-free-play" class="screen" hidden aria-label="自由モード">
+      <div class="free-play-character" aria-hidden="true">🎹</div>
+      <h2 class="free-play-title">すきなおとをひこう！</h2>
+      <p class="hint-text">どんなおとでもだいじょうぶ！</p>
+      <div id="free-praise-area" class="free-praise-area" hidden aria-live="polite">
+        <p id="free-praise-text" class="free-praise-text"></p>
+      </div>
+      <button id="btn-free-played" class="btn btn-done gap-sm" aria-label="弾いたよ">
+        🎵 ひいたよ！
+      </button>
+      <button id="btn-free-back" class="btn btn-ghost" aria-label="モード選択に戻る">
+        ← もどる
+      </button>
+    </section>
+
+    <!-- ドレミチャレンジ画面 -->
+    <section id="screen-doremi" class="screen" hidden aria-label="ドレミチャレンジ">
+      <div class="play-header">
+        <span id="doremi-stage-num" class="stage-counter">1 / 5</span>
+        <span class="doremi-badge">ドレミチャレンジ</span>
+      </div>
+      <div class="note-display gap-sm">
+        <span id="doremi-note-jp" class="note-jp" aria-label="音名">ド</span>
+        <span id="doremi-note-en" class="note-en" aria-label="英語音名">C</span>
+      </div>
+      <div id="doremi-staff-container" class="staff-container" role="img" aria-label="五線譜"></div>
+      <button id="btn-doremi-preview" class="btn-piano-preview" aria-label="この音を聴く">🎹</button>
+      <p id="doremi-hint" class="hint-text">このおとをじゅんばんにひこう！</p>
+      <button id="btn-doremi-done" class="btn btn-done" aria-label="弾けたよ">
+        🎵 ひけたよ！
+      </button>
+      <button id="btn-doremi-back" class="btn btn-ghost" aria-label="モード選択に戻る">
+        ← もどる
+      </button>
+    </section>
+
+    <!-- まなびメニュー画面 -->
+    <section id="screen-learn-menu" class="screen" hidden aria-label="まなびモード">
+      <h2 class="section-title">まなびモード</h2>
+      <p class="hint-text gap-md">なにをまなぶ？</p>
+      <div class="learn-menu-list">
+        <div class="card learn-card">
+          <div class="learn-icon">🎹</div>
+          <div class="learn-name">けんばんマップ</div>
+          <div class="learn-desc">ピアノのどこをひくか見てみよう！</div>
+          <button id="btn-learn-keyboard" class="btn btn-primary" style="margin-top:12px;" aria-label="けんばんマップを始める">はじめる</button>
+        </div>
+        <div class="card learn-card">
+          <div class="learn-icon">❓</div>
+          <div class="learn-name">おとのなまえ</div>
+          <div class="learn-desc">この音はなに？あてよう！</div>
+          <button id="btn-learn-quiz" class="btn btn-secondary" style="margin-top:12px;" aria-label="おとのなまえを始める">はじめる</button>
+        </div>
+        <div class="card learn-card">
+          <div class="learn-icon">🎵</div>
+          <div class="learn-name">どうようをひこう</div>
+          <div class="learn-desc">しっているうたをひいてみよう！</div>
+          <button id="btn-learn-songs" class="btn btn-accent" style="margin-top:12px;" aria-label="どうようをひこうを始める">はじめる</button>
+        </div>
+        <div class="card learn-card">
+          <div class="learn-icon">🥁</div>
+          <div class="learn-name">リズムれんしゅう</div>
+          <div class="learn-desc">リズムをまねしてたたこう！</div>
+          <button id="btn-learn-rhythm" class="btn btn-secondary" style="margin-top:12px;" aria-label="リズムれんしゅうを始める">はじめる</button>
+        </div>
+        <div class="card learn-card learn-card--soon">
+          <div class="learn-icon">🧩</div>
+          <div class="learn-name">おんぷパズル</div>
+          <span class="coming-soon-badge">もうすぐ！</span>
+        </div>
+      </div>
+      <button id="btn-learn-menu-back" class="btn btn-ghost" aria-label="モード選択に戻る">← もどる</button>
+    </section>
+
+    <!-- けんばんマップ画面 -->
+    <section id="screen-keyboard-map" class="screen" hidden aria-label="けんばんマップ">
+      <h2 class="section-title">けんばんマップ</h2>
+      <p class="hint-text">おとをたたいてみよう！</p>
+      <div id="keyboard-container" class="keyboard-container"></div>
+      <div id="keyboard-staff" class="staff-container" role="img" aria-label="五線譜"></div>
+      <p id="keyboard-note-label" class="keyboard-note-label" hidden></p>
+      <button id="btn-keyboard-back" class="btn btn-ghost" style="margin-top:auto;" aria-label="まなびメニューに戻る">← もどる</button>
+    </section>
+
+    <!-- おとのなまえ（クイズ）画面 -->
+    <section id="screen-note-quiz" class="screen" hidden aria-label="おとのなまえ">
+      <div class="quiz-header">
+        <h2 class="section-title" style="margin-bottom:0;">なんのおと？</h2>
+        <span id="quiz-score" class="quiz-score">⭐ 0</span>
+      </div>
+      <div id="quiz-staff-container" class="staff-container" role="img" aria-label="五線譜"></div>
+      <p class="hint-text">どのおとかな？</p>
+      <div id="quiz-choices" class="quiz-choices"></div>
+      <div id="quiz-result" class="quiz-result" hidden></div>
+      <button id="btn-quiz-back" class="btn btn-ghost" style="margin-top:auto;" aria-label="まなびメニューに戻る">← もどる</button>
+    </section>
+
+    <!-- リズムれんしゅう画面 -->
+    <section id="screen-rhythm" class="screen" hidden aria-label="リズムれんしゅう">
+      <div class="play-header">
+        <span id="rhythm-stage-num" class="stage-counter">1 / 3</span>
+        <span class="rhythm-badge">リズムれんしゅう</span>
+      </div>
+
+      <!-- 吹き出し -->
+      <div class="rhythm-speech-bubble">
+        <p id="rhythm-speech-text" class="rhythm-speech-text"></p>
+      </div>
+
+      <!-- リズム丸ボタン列 -->
+      <div id="rhythm-notes-row" class="rhythm-notes-row" aria-label="リズム音符"></div>
+
+      <p id="rhythm-hint" class="hint-text gap-sm">デモをきいてみよう！</p>
+
+      <!-- できた＋もう一度ボタン -->
+      <button id="btn-rhythm-done" class="btn btn-done" disabled aria-label="できた">
+        🎵 できた！
+      </button>
+      <button id="btn-rhythm-replay" class="btn btn-ghost rhythm-replay-btn" hidden aria-label="もう一度きく">
+        🔁 もう一度きく
+      </button>
+
+      <!-- クリア後カード -->
+      <div id="rhythm-lesson-card" class="rhythm-lesson-card" hidden>
+        <div id="rhythm-stars-row" class="rhythm-stars-row"></div>
+        <div class="lesson-praise">すごい！</div>
+        <p id="rhythm-lesson-text" class="lesson-text"></p>
+        <button id="btn-rhythm-next" class="btn btn-primary" style="margin-top:14px;" aria-label="次のパターンへ">
+          つぎへ ▶
+        </button>
+      </div>
+
+      <button id="btn-rhythm-back" class="btn btn-ghost" aria-label="まなびメニューに戻る">← もどる</button>
+    </section>
+
+    <!-- どうよう曲選択画面 -->
+    <section id="screen-songs-menu" class="screen" hidden aria-label="どうようをひこう">
+      <h2 class="section-title">どのうたをひく？</h2>
+      <div id="songs-list" class="songs-list"></div>
+      <button id="btn-songs-back" class="btn btn-ghost" aria-label="まなびメニューに戻る">← もどる</button>
+    </section>
+
+    <!-- どうよう演奏画面 -->
+    <section id="screen-song-play" class="screen" hidden aria-label="どうよう演奏">
+      <div class="play-header">
+        <span id="song-title" class="song-title-small"></span>
+        <span id="song-progress" class="stage-counter"></span>
+      </div>
+      <div class="note-display gap-sm">
+        <span id="song-note-jp" class="note-jp" aria-label="音名">ド</span>
+        <span id="song-note-en" class="note-en" aria-label="英語音名">C</span>
+      </div>
+      <div id="song-staff-container" class="staff-container" role="img" aria-label="五線譜"></div>
+      <button id="btn-song-preview" class="btn-piano-preview" aria-label="この音を聴く">🎹</button>
+      <p class="hint-text">ピアノでひいてみよう！</p>
+      <button id="btn-song-done" class="btn btn-done" aria-label="弾けたよ">🎵 ひけたよ！</button>
+      <button id="btn-song-back" class="btn btn-ghost" aria-label="まなびメニューに戻る">← もどる</button>
+    </section>
+
   </div>
 
   <!-- エラートースト（alert の代替） -->
   <div id="error-toast" class="error-toast" hidden role="alert"></div>
 
-  <script type="module" src="scripts/app.js"></script>
+  <script type="module" src="scripts/app.js?v=4"></script>
 </body>
 </html>

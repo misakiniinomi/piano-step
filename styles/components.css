@@ -81,7 +81,7 @@
   transition: transform 0.15s;
 }
 
-.mode-card:active {
+.mode-card:active:not(:has(button:active)) {
   transform: scale(0.97);
 }
 
@@ -109,6 +109,71 @@
   padding: 2px 8px;
   border-radius: 10px;
   margin-top: 6px;
+}
+
+/* モードカードリスト */
+.mode-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.mode-cards-list .mode-card {
+  margin: 0;
+}
+
+/* ========================================
+   自由モード画面
+======================================== */
+#screen-free-play {
+  justify-content: center;
+  gap: 16px;
+}
+
+.free-play-character {
+  font-size: 5rem;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.free-play-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.free-praise-area {
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 16px 24px;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.free-praise-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-primary);
+}
+
+/* ========================================
+   ドレミチャレンジ画面
+======================================== */
+#screen-doremi {
+  padding-top: 16px;
+  gap: 12px;
+}
+
+.doremi-badge {
+  background: var(--color-accent);
+  color: white;
+  font-size: 0.8rem;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-weight: 700;
 }
 
 /* ========================================
@@ -171,6 +236,7 @@
 
 .staff-svg {
   display: block;
+  font-family: 'Bravura', serif;
 }
 
 .character-area {
@@ -189,32 +255,20 @@
   text-align: center;
 }
 
-/* 【機能2】ヒント行 + プレビューボタン */
-.play-hint-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.btn-preview {
-  font-size: 1.6rem;
-  background: white;
-  border: 2px solid #e0e0e0;
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
+/* 【機能2】ピアノ絵文字プレビューボタン */
+.btn-piano-preview {
+  font-size: 2.6rem;
+  background: none;
+  border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.1s, box-shadow 0.1s;
-  flex-shrink: 0;
+  padding: 4px;
+  line-height: 1;
+  transition: transform 0.12s;
+  display: block;
 }
 
-.btn-preview:active {
-  transform: scale(0.92);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+.btn-piano-preview:active {
+  transform: scale(0.88);
 }
 
 .btn-done {
@@ -324,4 +378,421 @@
 .confetti-area {
   font-size: 2rem;
   letter-spacing: 0.3em;
+}
+
+/* ========================================
+   まなびモード - 学習メニュー
+======================================== */
+#screen-learn-menu {
+  gap: 10px;
+}
+
+.learn-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.learn-card {
+  text-align: center;
+}
+
+.learn-card--soon {
+  opacity: 0.55;
+}
+
+.learn-icon {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.learn-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.learn-desc {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* ========================================
+   けんばんマップ
+======================================== */
+#screen-keyboard-map {
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.keyboard-container {
+  width: 100%;
+  max-width: 360px;
+}
+
+.keyboard-wrapper {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  padding: 10px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px var(--color-shadow);
+}
+
+.keyboard-key {
+  flex: 1;
+  min-height: 90px;
+  border: none;
+  border-radius: 10px;
+  background: var(--key-color);
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 10px;
+  transition: transform 0.1s, filter 0.1s;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+.keyboard-key:active {
+  transform: scale(0.93) translateY(2px);
+  filter: brightness(0.88);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.key-label {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  font-family: var(--font-main);
+}
+
+.keyboard-note-label {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-align: center;
+  color: var(--color-primary);
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ========================================
+   おとのなまえ（クイズ）
+======================================== */
+#screen-note-quiz {
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 360px;
+}
+
+.quiz-score {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.quiz-choices {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.quiz-choice-btn {
+  flex: 1;
+  padding: 20px 8px;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.1s;
+  box-shadow: 0 4px 12px var(--color-shadow);
+  color: white;
+  font-family: var(--font-main);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.quiz-choice-btn:active {
+  transform: scale(0.94);
+}
+
+.quiz-choice-btn:disabled {
+  cursor: not-allowed;
+}
+
+.quiz-choice-btn.correct {
+  animation: correctFlash 0.4s ease-out;
+}
+
+.quiz-choice-btn.wrong {
+  animation: wrongShake 0.4s ease-out;
+}
+
+@keyframes correctFlash {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+}
+
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+.quiz-result {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  animation: fadeIn 0.25s ease-out;
+  min-height: 2rem;
+}
+
+/* ========================================
+   リズムれんしゅう
+======================================== */
+#screen-rhythm {
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.rhythm-badge {
+  background: var(--color-secondary);
+  color: white;
+  font-size: 0.8rem;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+/* 吹き出し */
+.rhythm-speech-bubble {
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  box-shadow: 0 3px 10px var(--color-shadow);
+  min-width: 160px;
+  text-align: center;
+}
+
+.rhythm-speech-bubble::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-bottom-color: white;
+}
+
+.rhythm-speech-text {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--color-secondary);
+  min-height: 1.6rem;
+}
+
+@keyframes speechPop {
+  0%   { transform: scale(0.8); opacity: 0.4; }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+.speech-pop {
+  animation: speechPop 0.25s ease-out;
+}
+
+/* リズム音符の丸 */
+.rhythm-notes-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 120px;
+  flex-wrap: wrap;
+}
+
+.rhythm-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.rhythm-note-label {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+.rhythm-note.active .rhythm-note-label { color: var(--note-color); }
+.rhythm-note.done   .rhythm-note-label { color: var(--color-accent); }
+
+.rhythm-circle {
+  border-radius: 50%;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: white;
+  transition: background 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.rhythm-circle--quarter { width: 80px; height: 80px; }
+.rhythm-circle--eighth  { width: 48px; height: 48px; font-size: 1rem; }
+.rhythm-circle--rest    {
+  width: 52px; height: 52px;
+  background: transparent !important;
+  border: 3px dashed #ccc;
+  box-shadow: none !important;
+}
+.rhythm-note.active .rhythm-circle--rest {
+  border-color: var(--note-color);
+  border-style: solid;
+  animation: rhythmBounce 0.45s ease-out;
+}
+
+@keyframes rhythmBounce {
+  0%   { transform: translateY(0)    scale(1); }
+  35%  { transform: translateY(-22px) scale(1.2); }
+  65%  { transform: translateY(-8px)  scale(1.1); }
+  100% { transform: translateY(0)    scale(1); }
+}
+
+.rhythm-note.active .rhythm-circle {
+  background: var(--note-color);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+  animation: rhythmBounce 0.45s ease-out;
+}
+
+.rhythm-note.done .rhythm-circle {
+  background: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(126,200,164,0.5);
+  font-size: 1.6rem;
+}
+
+/* リプレイボタン */
+.rhythm-replay-btn {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  padding: 8px 16px;
+}
+
+/* クリアカード */
+.rhythm-lesson-card {
+  background: linear-gradient(135deg, #FFF4E6, #FFF0F8);
+  border-radius: 24px;
+  padding: 20px 24px 16px;
+  box-shadow: 0 6px 20px var(--color-shadow);
+  text-align: center;
+  animation: celebrate 0.5s ease-out;
+  width: 100%;
+  max-width: 360px;
+}
+
+.rhythm-stars-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.rhythm-star {
+  font-size: 2.2rem;
+  display: inline-block;
+  opacity: 0;
+  animation: starPop 0.4s ease-out forwards;
+}
+
+.lesson-praise {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  animation: fadeIn 0.3s ease-out 0.5s both;
+}
+
+.lesson-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+/* ========================================
+   どうよう - 曲選択
+======================================== */
+#screen-songs-menu {
+  gap: 16px;
+}
+
+.songs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.song-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.song-emoji {
+  font-size: 2.5rem;
+}
+
+.song-info {
+  flex: 1;
+  text-align: left;
+}
+
+.song-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.song-note-count {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.song-play-btn {
+  font-size: 1rem;
+  padding: 10px 18px;
+  width: auto;
+  max-width: none;
+}
+
+/* ========================================
+   どうよう - 演奏
+======================================== */
+#screen-song-play {
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.song-title-small {
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: 700;
 }
